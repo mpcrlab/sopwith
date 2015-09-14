@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------------------------------------------------%
 
-function Hahn_bp_SopwithOnline1BW_Keyboard3
+function MPCR_Sopwith
 clear all
 close all
 clc
