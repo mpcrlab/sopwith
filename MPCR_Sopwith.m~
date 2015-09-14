@@ -30,11 +30,15 @@ beep off
 
 format long
 
+
+
 import java.awt.Robot;
 
 import java.awt.event.*;
 
 robot=Robot();
+
+
 
 x=175;
 y=175;
@@ -59,7 +63,11 @@ imagesc(pattern)
 
 % return
 
+
+
 pattern=im2double(pattern(:))';
+
+
 
 
 bias=ones(size(pattern,1),1);
@@ -80,9 +88,16 @@ L = 0.25;             % Learning    %Avoid Overshooting Minima
 M = 0.8;           % Momentum    %Smooths out the learning landscape
 
 
+
 c=100;
 
+
 choice={'e_up', 'roll', 'e_down', 'auto'};
+
+
+
+
+
 
 while true
     
@@ -107,12 +122,19 @@ while true
     figure(2)
     imagesc(pattern)
     
+    
     pattern=im2double(pattern(:))';
     
+    
+    
     pattern = pattern(ones(1,c),:);
-
+    
+    
     pattern = pattern + 0.5*randn(size(pattern));
-
+    
+    
+    
+    
     
     %     for i=1:size(pattern,1)
     %
@@ -122,28 +144,43 @@ while true
     %
     %     end
     
-
+    
+    
+    
+    
+    
     bias=ones(size(pattern,1),1);
     
     
     pattern = [pattern bias];
     
-
+    
+    
+    
     act1 = [af(0.1*pattern * w1) bias];
     
-
+    
+    
     act2 = af(act1 * w2);
     
-
+    
+    
     act22=HahnWTA(act2);
     
     
     [uA,~,uIdx] = unique(act22,'rows');
     act2mode = uA(mode(uIdx),:);
     
-
+    
+    
+   
     motor = input(['Enter 1 for elevator up, 2 for roll, 3 for elevator down, 4 for network(' choice{find(act2mode)} ')-->']);
-
+    
+    
+    
+    
+    
+    
     switch motor
         
         case 1
